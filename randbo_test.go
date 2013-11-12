@@ -18,8 +18,12 @@ func TestRandbo(t *testing.T) {
 	t.Logf("Read %x", buf)
 }
 
+const toCopy = 1024 * 1024
+
 func BenchmarkRandbo(b *testing.B) {
-	b.SetBytes(int64(b.N))
+	b.SetBytes(toCopy)
 	r := New()
-	io.CopyN(ioutil.Discard, r, int64(b.N))
+	for i := 0; i < b.N; i++ {
+		io.CopyN(ioutil.Discard, r, toCopy)
+	}
 }
