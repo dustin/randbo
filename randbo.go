@@ -16,6 +16,7 @@ func New() io.Reader {
 	return NewFrom(rand.NewSource(time.Now().UnixNano()))
 }
 
+// NewFrom creates a new reader from your own rand.Source
 func NewFrom(src rand.Source) io.Reader {
 	return &randbo{src}
 }
