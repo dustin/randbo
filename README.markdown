@@ -1,6 +1,6 @@
 A fast random number `io.Reader` implementation.
 
-![randbo](//randbo.png)
+![randbo](randbo.png)
 
 > IN A WORLD where no integer sequence is certain ...
 >
