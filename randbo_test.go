@@ -1,6 +1,7 @@
 package randbo
 
 import (
+	"crypto/rand"
 	"io"
 	"io/ioutil"
 	"testing"
@@ -25,5 +26,12 @@ func BenchmarkRandbo(b *testing.B) {
 	r := New()
 	for i := 0; i < b.N; i++ {
 		io.CopyN(ioutil.Discard, r, toCopy)
+	}
+}
+
+func BenchmarkCrypto(b *testing.B) {
+	b.SetBytes(toCopy)
+	for i := 0; i < b.N; i++ {
+		io.CopyN(ioutil.Discard, rand.Reader, toCopy)
 	}
 }
